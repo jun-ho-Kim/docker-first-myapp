@@ -2,14 +2,16 @@ import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import { typeDefs } from './schema';
 import { resolvers } from './resolver';
-import * as express from 'express';
+import express from 'express';
+import cors from 'cors';
 
 export default async function RunServer() {
   const app = express()
-
-  app.get('/', (req, res) => {
-    res.sendFile('index.html', { root: './HTML' })
-  })
+  app.use(cors())
+  //app.get('/', (req, res) => {
+  //  //res.sendFile('index.html', { root: './HTML' })
+  //  res.send('<h1>HI</h1>')
+  //})
 
   const server = new ApolloServer({
     typeDefs,
