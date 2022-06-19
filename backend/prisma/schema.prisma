@@ -9,5 +9,5 @@ datasource db {
 
 model do_visitorbook {
   id   Int    @unique(map: "id") @default(autoincrement())
-  text String @db.VarChar(200)
+  text String @db.VarChar(100)
 }

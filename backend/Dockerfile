@@ -5,7 +5,6 @@ WORKDIR /app
 
 COPY ./package.json ./
 COPY prisma ./prisma/
-ENV DATABASE_URL=mysql://junho:braun5271!@localhost:8080/dockerfirstmyapp
 RUN npm install -g npm@8.11.0
 RUN npm install
 
@@ -14,7 +13,7 @@ RUN npx prisma
 #RUN npx prisma db pull
 RUN npx prisma generate
 
-EXPOSE 5000
+EXPOSE 3000
 
 COPY . .
 CMD ["npm", "start"]
