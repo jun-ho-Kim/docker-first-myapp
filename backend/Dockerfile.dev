@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY ./package.json ./
 COPY prisma ./prisma/
-ENV DATABASE_URL="mysql://root:123@localhost:8080/dockerfirstmyapp"
+ENV DATABASE_URL="mysql://root:braun5271!@localhost:3306/docker-app"
 RUN npm install
 RUN npx prisma
 #RUN npx prisma init

@@ -3,13 +3,16 @@ services:
   backend:
     build: ./backend
     container_name: app_backend
+    #network_mode: 'host'
     #ports:
     #- "5000:5000"
     environment:
-      DATABASE_URL: "mysql://docker-app-db:wnsgh!23@docker-app-db.c8hr0qxqzkg2.ap-northeast-2.rds.amazonaws.com:3306/docker-app"
-      MYSQL_HOST: database-1.c8hr0qxqzkg2.ap-northeast-2.rds.amazonaws.com
-      MYSQL_USER: admin
-      MYSQL_ROOT_PASSWORD: wnsgh!23
+      #DATABASE_URL: "mysql://docker-app-db:wnsgh!23@docker-app-db.c8hr0qxqzkg2.ap-northeast-2.rds.amazonaws.com:3306/docker-app"
+      #DATABASE_URL: "mysql://junho:wnsgh!23@127.0.0.1:3306/docker-app"
+      DATABASE_URL: "mysql://root:braun5271!@localhost:3306/docker-app"
+      MYSQL_HOST: localhost
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: braun5271!
       MYSQL_DATABASE: docker_app
       MYSQL_PORT: 3306
   frontend:
@@ -35,11 +38,14 @@ services:
       - ./mysql/mysql_data:/var/lib/mysql
       - ./mysql/sqls/:/docker-entrypoint-initdb.d/
     environment:
-      MYSQL_HOST: database-1.c8hr0qxqzkg2.ap-northeast-2.rds.amazonaws.com
-      MYSQL_USER: admin
-      MYSQL_ROOT_PASSWORD: wnsgh!23
+      DATABASE_URL: "mysql://root:braun5271!@localhost:3306/docker-app"
+      MYSQL_HOST: localhost
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: braun5271!
       MYSQL_DATABASE: docker_app
       MYSQL_PORT: 3306
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   #nginx: 
   #  restart: always
   #  image: junho/docker-nginx
