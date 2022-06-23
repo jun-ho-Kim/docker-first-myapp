@@ -1,16 +1,16 @@
 FROM node:14.14.0-alpine
 WORKDIR /app
 
-#RUN rm -rf ./node_modules
 
 COPY ./package.json ./
 COPY prisma ./prisma/
+COPY .env ./
 RUN npm install -g npm@8.11.0
 RUN npm install
 
 RUN npx prisma
 #RUN npx prisma init
-#RUN npx prisma db pull
+RUN npx prisma db pull
 RUN npx prisma generate
 
 EXPOSE 3000
