@@ -23,7 +23,7 @@ export default async function RunServer() {
 
   server.applyMiddleware({ app })
 
-  app.listen(5000, () => {
+  app.listen(3000, () => {
     console.log('😀 start')
   })
 

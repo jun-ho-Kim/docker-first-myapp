@@ -12,7 +12,7 @@ RUN npx prisma
 #RUN npx prisma init
 RUN npx prisma db pull
 RUN npx prisma generate
-
+#RUN npx prisma db pull
 EXPOSE 3000
 
 COPY . .
